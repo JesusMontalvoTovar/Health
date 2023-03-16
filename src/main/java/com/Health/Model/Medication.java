@@ -20,9 +20,11 @@ public class Medication {
     private String frecuency;
     private String duration;
     private LocalDate startDate;
+    @OneToOne
+    Medicine medicine;
 
     public Medication(){}
-    public Medication(int medicineId, String dosage, String routeOfAdministration, String frecuency, String duration, LocalDate startDate){
+    public Medication(int medicineId, String dosage, String routeOfAdministration, String frecuency, String duration, LocalDate startDate, Medicine medicine){
         this.medicineId = medicineId;
         this.dosage = dosage;
         this.routeOfAdministration = routeOfAdministration;
@@ -49,6 +51,9 @@ public class Medication {
     public LocalDate getStartDate() {
         return startDate;
     }
+    public Medicine getMedicine() {
+        return medicine;
+    }
 
     public void setMedicineId(Integer medicineId) {
         this.medicineId = medicineId;
@@ -67,5 +72,8 @@ public class Medication {
     }
     public void setStartDate(LocalDate startDate) {
         this.startDate = getStartDate();
+    }
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
     }
 }

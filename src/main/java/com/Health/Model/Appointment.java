@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Set;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -24,8 +25,12 @@ public class Appointment {
     private int status;
     private String doctorNotes;
 
+    @OneToOne
+   private Doctor doctor;
+    @OneToOne
+    private Medication medication;
     public Appointment(){}
-    public Appointment(Integer patientId, Integer doctorId, LocalDate date, LocalTime hour, String visitReason, String visitPlace, int status, String doctorNotes){
+    public Appointment(Integer patientId, Integer doctorId, LocalDate date, LocalTime hour, String visitReason, String visitPlace, int status, String doctorNotes, Doctor doctor, Medication medication){
         this.patientId = patientId;
         this.doctorId = doctorId;
         this.date = date;
@@ -34,6 +39,8 @@ public class Appointment {
         this.visitPlace = visitPlace;
         this.status = status;
         this.doctorNotes = doctorNotes;
+        this.doctor = doctor;
+        this.medication = medication;
     }
 
     public Integer getPatientId() {
@@ -60,6 +67,12 @@ public class Appointment {
     public String getDoctorNotes() {
         return doctorNotes;
     }
+    public Doctor getDoctor() {
+        return doctor;
+    }
+    public Medication getMedication() {
+        return medication;
+    }
 
     public void setPatientId(Integer patientId) {
         this.patientId = patientId;
@@ -84,6 +97,12 @@ public class Appointment {
     }
     public void setDoctorNotes(String doctorNotes) {
         this.doctorNotes = doctorNotes;
+    }
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+    public void setMedication(Medication medication) {
+        this.medication = medication;
     }
 
 }

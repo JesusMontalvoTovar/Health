@@ -3,6 +3,8 @@ package com.Health.Model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -32,11 +34,15 @@ public class Patient {
 
     private Double height;
 
+
+    @OneToMany
+   private Set<Appointment> appointments;
+
     public Patient() {
 
     }
 
-    public Patient(Integer id, String name, String lastname, Integer ssn, LocalDate birthdate, Double temperature, Double blood_pressure, Double weight, Double height) {
+    public Patient(Integer id, String name, String lastname, Integer ssn, LocalDate birthdate, Double temperature, Double blood_pressure, Double weight, Double height, Set<Appointment> appointments) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -46,6 +52,7 @@ public class Patient {
         this.blood_pressure = blood_pressure;
         this.weight = weight;
         this.height = height;
+        this.appointments = appointments;
     }
 
     public Integer getId() {
@@ -91,6 +98,9 @@ public class Patient {
     public Double getTemperature() {
         return temperature;
     }
+    public Set<Appointment> getAppointments() {
+        return getAppointments();
+    }
 
     public void setTemperature(Double temperature) {
         this.temperature = temperature;
@@ -118,5 +128,8 @@ public class Patient {
 
     public void setHeight(Double height) {
         this.height = height;
+    }
+    public void setAppointments(Set<Appointment> appointments) {
+        this.appointments = appointments;
     }
 }
