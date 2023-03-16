@@ -3,7 +3,9 @@ package com.Health.Model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity // This tells Hibernate to make a table out of this class
