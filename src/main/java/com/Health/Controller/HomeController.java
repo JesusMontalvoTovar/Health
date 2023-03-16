@@ -1,11 +1,13 @@
 package com.Health.Controller;
 
+import com.Health.Application.PatientApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HomeController {
+    PatientApplication patientApplication = new PatientApplication();
 
     @RequestMapping(value = "/" )
     public String index()
@@ -15,6 +17,8 @@ public class HomeController {
     @GetMapping(value = "/hello")
     public String hello()
     {
-        return "Hello Home!";
+        patientApplication.prueba();
+        return "guadamos primer paciente";
+
     }
 }
