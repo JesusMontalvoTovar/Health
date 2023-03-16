@@ -20,6 +20,7 @@ public class PatientApplication {
     public void prueba()
     {
         List<Patient> patient;
+
         patient = (List<Patient>) patientRepository.findAll();
         System.out.println(patient.get(0).getName());
         System.out.println(patient);
