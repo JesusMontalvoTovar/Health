@@ -1,6 +1,7 @@
 package com.Health.Model;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -8,6 +9,7 @@ import java.util.Set;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+@Component
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name = "appointment")
 public class Appointment {
@@ -17,7 +19,6 @@ public class Appointment {
     private Integer id;
 
     private Integer patientId;
-    private Integer doctorId;
     private LocalDate date;
     private LocalTime hour;
     private String visitReason;
@@ -30,9 +31,8 @@ public class Appointment {
     @OneToOne
     private Medication medication;
     public Appointment(){}
-    public Appointment(Integer patientId, Integer doctorId, LocalDate date, LocalTime hour, String visitReason, String visitPlace, int status, String doctorNotes, Doctor doctor, Medication medication){
+    public Appointment(Integer patientId, LocalDate date, LocalTime hour, String visitReason, String visitPlace, int status, String doctorNotes, Doctor doctor, Medication medication){
         this.patientId = patientId;
-        this.doctorId = doctorId;
         this.date = date;
         this.hour = hour;
         this.visitReason = visitReason;
@@ -46,9 +46,7 @@ public class Appointment {
     public Integer getPatientId() {
         return patientId;
     }
-    public Integer getDoctorId() {
-        return doctorId;
-    }
+
     public LocalDate date() {
         return date;
     }
@@ -77,9 +75,7 @@ public class Appointment {
     public void setPatientId(Integer patientId) {
         this.patientId = patientId;
     }
-    public void setDoctorId(Integer doctorId) {
-        this.doctorId = doctorId;
-    }
+
     public void setDate(LocalDate date) {
         this.date = date;
     }

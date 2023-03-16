@@ -25,4 +25,11 @@ public class PatientApplication {
         System.out.println(patient.get(0).getName());
         System.out.println(patient);
     }
+
+    public String addPatient(){
+        Patient patient = new Patient();
+        patient.setName("daniii");
+        System.out.println(patientRepository.save(patient));
+        return null;
+    }
 }
