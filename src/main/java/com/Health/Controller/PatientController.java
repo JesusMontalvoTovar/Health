@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(value = "/patient")
 public class PatientController {
     @Autowired
     private PatientApplication patientApplication;
@@ -19,16 +20,11 @@ public class PatientController {
         this.patientApplication = patientApplication;
     }
 
-    @RequestMapping(value = "/" )
-    public String index()
-    {
-        return "Home Index";
-    }
-    @GetMapping(value = "/hello")
-    public String hello()
+
+    @GetMapping(value = "/")
+    public void hello()
     {
         patientApplication.prueba();
-        return "guadamos primer paciente";
 
     }
 }
