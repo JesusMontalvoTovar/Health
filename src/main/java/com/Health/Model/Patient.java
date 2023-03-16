@@ -30,6 +30,10 @@ public class Patient {
 
     private Double height;
 
+    public Patient() {
+
+    }
+
     public Patient(Integer id, String name, String lastname, Integer ssn, LocalDate birthdate, Double temperature, Double blood_pressure, Double weight, Double height) {
         this.id = id;
         this.name = name;
