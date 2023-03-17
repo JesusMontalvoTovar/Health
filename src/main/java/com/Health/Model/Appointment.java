@@ -1,6 +1,7 @@
 package com.Health.Model;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -8,6 +9,7 @@ import java.util.Set;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+@Component
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name = "appointment")
 public class Appointment {
@@ -17,7 +19,6 @@ public class Appointment {
     private Integer id;
 
     private Integer patientId;
-    private Integer doctorId;
     private LocalDate date;
     private LocalTime hour;
     private String visitReason;
@@ -25,30 +26,28 @@ public class Appointment {
     private int status;
     private String doctorNotes;
 
-    @OneToOne
-   private Doctor doctor;
+
     @OneToOne
     private Medication medication;
+    @OneToOne
+    private Appointment_Medication appointment_medication;
     public Appointment(){}
-    public Appointment(Integer patientId, Integer doctorId, LocalDate date, LocalTime hour, String visitReason, String visitPlace, int status, String doctorNotes, Doctor doctor, Medication medication){
+    public Appointment(Integer patientId, LocalDate date, LocalTime hour, String visitReason, String visitPlace, int status, String doctorNotes,  Medication medication,Appointment_Medication appointment_medication){
         this.patientId = patientId;
-        this.doctorId = doctorId;
         this.date = date;
         this.hour = hour;
         this.visitReason = visitReason;
         this.visitPlace = visitPlace;
         this.status = status;
         this.doctorNotes = doctorNotes;
-        this.doctor = doctor;
         this.medication = medication;
+        this.appointment_medication = appointment_medication;
     }
 
     public Integer getPatientId() {
         return patientId;
     }
-    public Integer getDoctorId() {
-        return doctorId;
-    }
+
     public LocalDate date() {
         return date;
     }
@@ -67,19 +66,17 @@ public class Appointment {
     public String getDoctorNotes() {
         return doctorNotes;
     }
-    public Doctor getDoctor() {
-        return doctor;
-    }
     public Medication getMedication() {
         return medication;
+    }
+    public Appointment_Medication getAppointment_medication() {
+        return appointment_medication;
     }
 
     public void setPatientId(Integer patientId) {
         this.patientId = patientId;
     }
-    public void setDoctorId(Integer doctorId) {
-        this.doctorId = doctorId;
-    }
+
     public void setDate(LocalDate date) {
         this.date = date;
     }
@@ -98,11 +95,11 @@ public class Appointment {
     public void setDoctorNotes(String doctorNotes) {
         this.doctorNotes = doctorNotes;
     }
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
     public void setMedication(Medication medication) {
         this.medication = medication;
+    }
+    public void setAppointment_medication(Appointment_Medication appointment_medication) {
+        this.appointment_medication = appointment_medication;
     }
 
 }

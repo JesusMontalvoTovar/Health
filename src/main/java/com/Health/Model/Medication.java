@@ -14,7 +14,7 @@ public class Medication {
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
-    private int medicineId;
+
     private String dosage;
     private String routeOfAdministration;
     private String frecuency;
@@ -24,8 +24,8 @@ public class Medication {
     Medicine medicine;
 
     public Medication(){}
-    public Medication(int medicineId, String dosage, String routeOfAdministration, String frecuency, String duration, LocalDate startDate, Medicine medicine){
-        this.medicineId = medicineId;
+    public Medication(String dosage, String routeOfAdministration, String frecuency, String duration, LocalDate startDate, Medicine medicine){
+
         this.dosage = dosage;
         this.routeOfAdministration = routeOfAdministration;
         this.frecuency = frecuency;
@@ -33,9 +33,7 @@ public class Medication {
         this.startDate = startDate;
     }
 
-    public int getMedicineId() {
-        return medicineId;
-    }
+
     public String getDosage() {
         return dosage;
     }
@@ -55,9 +53,7 @@ public class Medication {
         return medicine;
     }
 
-    public void setMedicineId(Integer medicineId) {
-        this.medicineId = medicineId;
-    }
+
     public void setDosage(String dosage) {
         this.dosage = dosage;
     }
