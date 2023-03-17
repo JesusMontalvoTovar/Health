@@ -15,11 +15,23 @@ public class Appointment_Medication {
     private Integer id;
 
     @OneToOne
+    private Appointment appointment;
+    @OneToOne
     private Medication medication;
 
     public  Appointment_Medication(){}
-    public  Appointment_Medication(Medication medication){
+    public  Appointment_Medication(Medication medication, Appointment appointment)
+    {
         this.medication = medication;
+        this.appointment = appointment;
+    }
+
+    public Appointment getAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(Appointment appointment) {
+        this.appointment = appointment;
     }
 
     public Medication getMedication() {
@@ -29,4 +41,6 @@ public class Appointment_Medication {
     public void setMedication(Medication medication) {
         this.medication = medication;
     }
+
+
 }

@@ -17,16 +17,20 @@ public class Doctor {
     private String associateDegree;
     private String speciality;
     private String email;
-    private int phone;
+    private long phone;
 
     public Doctor(){}
-    public Doctor(String name, String lastName, String associateDegree, String speciality, String email, int phone){
+    public Doctor(Integer id, String name, String lastName, String associateDegree, String speciality, String email, long phone){
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.associateDegree = associateDegree;
         this.speciality = speciality;
         this.email = email;
         this.phone = phone;
+    }
+    public Integer getId() {
+        return id;
     }
     public String getName() {
         return name;
@@ -43,10 +47,14 @@ public class Doctor {
     public String getEmail() {
         return email;
     }
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public void setName(String name) {
         this.name = name;
     }
@@ -62,8 +70,11 @@ public class Doctor {
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
+
+
+
 
 }

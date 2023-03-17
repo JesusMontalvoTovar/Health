@@ -22,7 +22,7 @@ public class Patient {
 
     private String lastname;
 
-    private Integer ssn;
+    private long ssn;
 
     private LocalDate birthdate;
 
@@ -34,15 +34,11 @@ public class Patient {
 
     private Double height;
 
-
-    @OneToMany
-   private Set<Appointment> appointments;
-
     public Patient() {
 
     }
 
-    public Patient(Integer id, String name, String lastname, Integer ssn, LocalDate birthdate, Double temperature, Double blood_pressure, Double weight, Double height, Set<Appointment> appointments) {
+    public Patient(Integer id, String name, String lastname, long ssn, LocalDate birthdate, Double temperature, Double blood_pressure, Double weight, Double height) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -52,7 +48,6 @@ public class Patient {
         this.blood_pressure = blood_pressure;
         this.weight = weight;
         this.height = height;
-        this.appointments = appointments;
     }
 
     public Integer getId() {
@@ -79,11 +74,11 @@ public class Patient {
         this.lastname = lastname;
     }
 
-    public Integer getSsn() {
+    public long getSsn() {
         return ssn;
     }
 
-    public void setSsn(Integer ssn) {
+    public void setSsn(long ssn) {
         this.ssn = ssn;
     }
 
@@ -97,9 +92,6 @@ public class Patient {
 
     public Double getTemperature() {
         return temperature;
-    }
-    public Set<Appointment> getAppointments() {
-        return getAppointments();
     }
 
     public void setTemperature(Double temperature) {
@@ -129,7 +121,5 @@ public class Patient {
     public void setHeight(Double height) {
         this.height = height;
     }
-    public void setAppointments(Set<Appointment> appointments) {
-        this.appointments = appointments;
-    }
+
 }

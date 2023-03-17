@@ -13,8 +13,6 @@ public class Medication {
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
-
-
     private String dosage;
     private String routeOfAdministration;
     private String frecuency;

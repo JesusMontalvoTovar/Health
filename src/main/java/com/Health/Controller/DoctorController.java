@@ -1,9 +1,6 @@
 package com.Health.Controller;
 
-import com.Health.Application.PatientApplication;
 import com.Health.Model.Doctor;
-import com.Health.Repository.IDoctorRepository;
-import com.Health.Repository.IPatientRepository;
 import com.Health.Service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,12 +17,12 @@ public class DoctorController {
 
     @Autowired
     private DoctorService doctorService;
-    private IDoctorRepository doctorRepository;
 
-    public DoctorController(DoctorService doctorService, IDoctorRepository doctorRepository)
+
+    public DoctorController(DoctorService doctorService)
     {
         this.doctorService = doctorService;
-        this.doctorRepository = doctorRepository;
+
     }
 
     @GetMapping("doctors")
@@ -45,9 +42,7 @@ public class DoctorController {
         }
     }
 
-    @PostMapping(path = "doctors",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "add")
     public ResponseEntity<Doctor> create(@RequestBody Doctor newDoctor) {
 
         Doctor doctor = doctorService.save(newDoctor);
@@ -59,7 +54,7 @@ public class DoctorController {
         }
     }
 
-    @PutMapping(path = "doctors",
+    @PutMapping(path = "update",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Doctor> update(@RequestBody Doctor existingDoctor) {

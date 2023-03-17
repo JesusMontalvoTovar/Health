@@ -18,7 +18,6 @@ public class Appointment {
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
-    private Integer patientId;
     private LocalDate date;
     private LocalTime hour;
     private String visitReason;
@@ -26,27 +25,25 @@ public class Appointment {
     private int status;
     private String doctorNotes;
 
+    @OneToOne
+    private Patient patient;
+    @OneToOne
+    private Doctor doctor;
 
-    @OneToOne
-    private Medication medication;
-    @OneToOne
-    private Appointment_Medication appointment_medication;
+
     public Appointment(){}
-    public Appointment(Integer patientId, LocalDate date, LocalTime hour, String visitReason, String visitPlace, int status, String doctorNotes,  Medication medication,Appointment_Medication appointment_medication){
-        this.patientId = patientId;
+    public Appointment( LocalDate date, LocalTime hour, String visitReason, String visitPlace, int status, String doctorNotes, Patient patient, Doctor doctor){
+
         this.date = date;
         this.hour = hour;
         this.visitReason = visitReason;
         this.visitPlace = visitPlace;
         this.status = status;
         this.doctorNotes = doctorNotes;
-        this.medication = medication;
-        this.appointment_medication = appointment_medication;
+        this.patient = patient;
+        this.doctor = doctor;
     }
 
-    public Integer getPatientId() {
-        return patientId;
-    }
 
     public LocalDate date() {
         return date;
@@ -66,16 +63,10 @@ public class Appointment {
     public String getDoctorNotes() {
         return doctorNotes;
     }
-    public Medication getMedication() {
-        return medication;
-    }
-    public Appointment_Medication getAppointment_medication() {
-        return appointment_medication;
-    }
 
-    public void setPatientId(Integer patientId) {
-        this.patientId = patientId;
-    }
+
+
+
 
     public void setDate(LocalDate date) {
         this.date = date;
@@ -95,11 +86,21 @@ public class Appointment {
     public void setDoctorNotes(String doctorNotes) {
         this.doctorNotes = doctorNotes;
     }
-    public void setMedication(Medication medication) {
-        this.medication = medication;
-    }
-    public void setAppointment_medication(Appointment_Medication appointment_medication) {
-        this.appointment_medication = appointment_medication;
+
+
+    public Patient getPatient() {
+        return patient;
     }
 
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 }

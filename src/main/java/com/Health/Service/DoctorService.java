@@ -24,12 +24,12 @@ public class DoctorService {
 
     {
         List<Doctor> doctors = new ArrayList<>();
-        var docs = doctorRepository.findAll();
+        var _doctors = doctorRepository.findAll();
 
-        docs.forEach( doctor ->
+        _doctors.forEach( doctor ->
         {
             doctors.add(
-                    new Doctor(doctor.getName(), doctor.getLastName(), doctor.getAssociateDegree(), doctor.getSpeciality(), doctor.getEmail(), doctor.getPhone())
+                    new Doctor(doctor.getId(), doctor.getName(), doctor.getLastName(), doctor.getAssociateDegree(), doctor.getSpeciality(), doctor.getEmail(), doctor.getPhone())
 
             );
         });
@@ -43,8 +43,9 @@ public class DoctorService {
     }
 
     public Doctor save(Doctor newDoctor)
+
     {
-        return null;
+        return doctorRepository.save(newDoctor);
     }
 
     public Doctor update(Doctor doctor)
