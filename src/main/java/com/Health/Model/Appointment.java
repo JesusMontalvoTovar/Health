@@ -26,12 +26,13 @@ public class Appointment {
     private int status;
     private String doctorNotes;
 
-    @OneToOne
-   private Doctor doctor;
+
     @OneToOne
     private Medication medication;
+    @OneToOne
+    private Appointment_Medication appointment_medication;
     public Appointment(){}
-    public Appointment(Integer patientId, LocalDate date, LocalTime hour, String visitReason, String visitPlace, int status, String doctorNotes, Doctor doctor, Medication medication){
+    public Appointment(Integer patientId, LocalDate date, LocalTime hour, String visitReason, String visitPlace, int status, String doctorNotes,  Medication medication,Appointment_Medication appointment_medication){
         this.patientId = patientId;
         this.date = date;
         this.hour = hour;
@@ -39,8 +40,8 @@ public class Appointment {
         this.visitPlace = visitPlace;
         this.status = status;
         this.doctorNotes = doctorNotes;
-        this.doctor = doctor;
         this.medication = medication;
+        this.appointment_medication = appointment_medication;
     }
 
     public Integer getPatientId() {
@@ -65,11 +66,11 @@ public class Appointment {
     public String getDoctorNotes() {
         return doctorNotes;
     }
-    public Doctor getDoctor() {
-        return doctor;
-    }
     public Medication getMedication() {
         return medication;
+    }
+    public Appointment_Medication getAppointment_medication() {
+        return appointment_medication;
     }
 
     public void setPatientId(Integer patientId) {
@@ -94,11 +95,11 @@ public class Appointment {
     public void setDoctorNotes(String doctorNotes) {
         this.doctorNotes = doctorNotes;
     }
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
     public void setMedication(Medication medication) {
         this.medication = medication;
+    }
+    public void setAppointment_medication(Appointment_Medication appointment_medication) {
+        this.appointment_medication = appointment_medication;
     }
 
 }
